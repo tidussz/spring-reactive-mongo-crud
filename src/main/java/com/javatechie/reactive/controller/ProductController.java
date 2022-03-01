@@ -14,17 +14,29 @@ import org.springframework.web.bind.annotation.RestController;
 import com.javatechie.reactive.dto.ProductDto;
 import com.javatechie.reactive.service.ProductService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/products")
+@Tag(name = "Product Controller", description = "This is the product controller")
 public class ProductController {
 
 	@Autowired
 	private ProductService productService;
 	
 	@GetMapping
+	@Operation(summary = "Find products", description = "Find all products in database", tags = { "product" })
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "successful operation", 
+                content = @Content(array = @ArraySchema(schema = @Schema(implementation = ProductDto.class)))) })	
 	public Flux<ProductDto> getProducts() {
 		return productService.getProducts();
 	}

@@ -15,7 +15,7 @@
 	<name>spring-reactive-mongo-crud</name>
 	<description>Demo project to follow the tutorial about Reactive programming with MongoDB: https://www.youtube.com/watch?v=bXcFCgQsvAE</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -46,6 +46,17 @@
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-webflux-core</artifactId>
+			<version>1.4.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-webflux-ui</artifactId>
+			<version>1.4.3</version>
 		</dependency>
 	</dependencies>
 
